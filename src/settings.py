@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import ClassVar
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -18,6 +19,7 @@ class DBConfig(Config):
 
 class Settings(BaseSettings):
     DB: DBConfig = DBConfig()
+    DATABASE_URL: ClassVar[str] = f'postgresql+asyncpg://{DB.DB_USER}:{DB.DB_PASS}@localhost/{DB.DB_NAME}'
 
 
 settings = Settings()
