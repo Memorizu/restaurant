@@ -18,6 +18,7 @@ class DBConfig(Config):
 
 
 class Settings(BaseSettings):
+    API_V1_PREFIX: str = '/api/v1'
     DB: DBConfig = DBConfig()
     DATABASE_URL: ClassVar[str] = f'postgresql+asyncpg://{DB.DB_USER}:{DB.DB_PASS}@localhost/{DB.DB_NAME}'
 

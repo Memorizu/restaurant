@@ -14,7 +14,7 @@ class DatabaseHelper:
             autocommit=False
         )
 
-    def get_session(self):
+    def get_scoped_session(self):
         session = async_scoped_session(
             session_factory=self.session_factory,
             scopefunc=current_task
@@ -27,8 +27,9 @@ class DatabaseHelper:
             await session.close()
 
     async def scoped_session_dependency(self):
-        session = self.get_session()
-        yield session
+        session = self.get_scoped_session()
+        async with session() as s:
+            yield s
         await session.close()
 
 
