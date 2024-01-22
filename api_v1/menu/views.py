@@ -8,6 +8,7 @@ from api_v1.menu import crud
 from api_v1.menu.schemas import MenuSchema, MenuCreateSchema, MenuUpdateSchema
 from src.db.models import Menu
 
+
 router = APIRouter(tags=['menus'])
 
 

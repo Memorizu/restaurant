@@ -30,10 +30,8 @@ async def update_menu(
         menu: Menu,
         menu_update: MenuUpdateSchema
 ) -> Menu:
-    print(f'title {menu_update.title}\n description {menu_update.description}')
     for name, value in menu_update.model_dump().items():
         setattr(menu, name, value)
-    print(f'title {menu_update.title}\n description {menu_update.description}')
     await session.commit()
     await session.refresh(menu)
     return menu

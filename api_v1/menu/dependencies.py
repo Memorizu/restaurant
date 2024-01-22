@@ -5,7 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.db.db_helper import db_helper
 from src.db.models import Menu
-from . import crud
+from api_v1.menu import crud
 
 
 async def menu_by_id(
